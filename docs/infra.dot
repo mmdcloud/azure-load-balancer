@@ -1,0 +1,53 @@
+digraph INFRA {
+  node [ color = "black", fillcolor = "#E6E6E6", height =1, style = "filled,bold,rounded", fontname = "Arial" ];
+  "azurerm_resource_group.main" [ label = "azurerm_resource_group.main
+(azurerm_resource_group)", shape =rectangle ];
+  "azurerm_virtual_network.main" [ label = "azurerm_virtual_network.main
+(azurerm_virtual_network)", shape =rectangle ];
+  "azurerm_subnet.main" [ label = "azurerm_subnet.main
+(azurerm_subnet)", shape =rectangle ];
+  "azurerm_public_ip.lb" [ label = "azurerm_public_ip.lb
+(azurerm_public_ip)", shape =rectangle ];
+  "azurerm_lb.main" [ label = "azurerm_lb.main
+(azurerm_lb)", shape =rectangle, fillcolor = "#E78F81" ];
+  "azurerm_lb_backend_address_pool.main" [ label = "azurerm_lb_backend_address_pool.main
+(azurerm_lb_backend_address_pool)", shape =rectangle ];
+  "azurerm_lb_probe.main" [ label = "azurerm_lb_probe.main
+(azurerm_lb_probe)", shape =rectangle ];
+  "azurerm_lb_rule.main" [ label = "azurerm_lb_rule.main
+(azurerm_lb_rule)", shape =rectangle ];
+  "azurerm_network_security_group.main" [ label = "azurerm_network_security_group.main
+(azurerm_network_security_group)", shape =rectangle ];
+  "azurerm_network_interface.main" [ label = "azurerm_network_interface.main
+(azurerm_network_interface)", shape =rectangle ];
+  "azurerm_network_interface_security_group_association.main" [ label = "azurerm_network_interface_security_group_association.main
+(azurerm_network_interface_security_group_association)", shape =rectangle ];
+  "azurerm_availability_set.main" [ label = "azurerm_availability_set.main
+(azurerm_availability_set)", shape =rectangle ];
+  "azurerm_linux_virtual_machine.main" [ label = "azurerm_linux_virtual_machine.main
+(azurerm_linux_virtual_machine)", shape =rectangle, fillcolor = "#B7E0FF" ];
+  "azurerm_network_interface_backend_address_pool_association.main" [ label = "azurerm_network_interface_backend_address_pool_association.main
+(azurerm_network_interface_backend_address_pool_association)", shape =rectangle ];
+  "azurerm_virtual_network.main" -> "azurerm_resource_group.main";
+  "azurerm_subnet.main" -> "azurerm_resource_group.main";
+  "azurerm_subnet.main" -> "azurerm_virtual_network.main";
+  "azurerm_public_ip.lb" -> "azurerm_resource_group.main";
+  "azurerm_lb.main" -> "azurerm_resource_group.main";
+  "azurerm_lb.main" -> "azurerm_public_ip.lb";
+  "azurerm_lb_backend_address_pool.main" -> "azurerm_lb.main";
+  "azurerm_lb_probe.main" -> "azurerm_lb.main";
+  "azurerm_lb_rule.main" -> "azurerm_lb.main";
+  "azurerm_lb_rule.main" -> "azurerm_lb_backend_address_pool.main";
+  "azurerm_lb_rule.main" -> "azurerm_lb_probe.main";
+  "azurerm_network_security_group.main" -> "azurerm_resource_group.main";
+  "azurerm_network_interface.main" -> "azurerm_resource_group.main";
+  "azurerm_network_interface.main" -> "azurerm_subnet.main";
+  "azurerm_network_interface_security_group_association.main" -> "azurerm_network_interface.main";
+  "azurerm_network_interface_security_group_association.main" -> "azurerm_network_security_group.main";
+  "azurerm_availability_set.main" -> "azurerm_resource_group.main";
+  "azurerm_linux_virtual_machine.main" -> "azurerm_resource_group.main";
+  "azurerm_linux_virtual_machine.main" -> "azurerm_network_interface.main";
+  "azurerm_linux_virtual_machine.main" -> "azurerm_availability_set.main";
+  "azurerm_network_interface_backend_address_pool_association.main" -> "azurerm_network_interface.main";
+  "azurerm_network_interface_backend_address_pool_association.main" -> "azurerm_lb_backend_address_pool.main";
+}
