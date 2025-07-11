@@ -1,6 +1,7 @@
 variable "resource_group_name" {
   description = "Name of the resource group"
   type        = string
+  default     = "lb-rg"
 }
 
 variable "location" {
@@ -12,26 +13,31 @@ variable "location" {
 variable "vnet_name" {
   description = "Virtual network name"
   type        = string
+  default     = "lb-vnet"
 }
 
 variable "vnet_address_space" {
   description = "Address space for the virtual network"
   type        = list(string)
+  default     = ["10.0.0.0/16"]
 }
 
 variable "subnet_name" {
   description = "Subnet name for backend servers"
   type        = string
+  default     = "lb-subnet"
 }
 
 variable "subnet_address_prefixes" {
   description = "Address prefixes for the subnet"
   type        = list(string)
+  default     = ["10.0.1.0/24"]
 }
 
 variable "load_balancer_name" {
   description = "Name of the load balancer"
   type        = string
+  default     = "lb"
 }
 
 variable "lb_sku" {
@@ -43,6 +49,7 @@ variable "lb_sku" {
 variable "backend_pool_name" {
   description = "Name of the backend pool"
   type        = string
+  default     = "lb-backend-pool"
 }
 
 variable "vm_count" {
@@ -60,17 +67,20 @@ variable "vm_size" {
 variable "admin_username" {
   description = "Admin username for the VMs"
   type        = string
+  default     = "ubuntu"
 }
 
 variable "admin_password" {
   description = "Admin password for the VMs"
   type        = string
   sensitive   = true
+  default     = "Mohit@1234"
 }
 
 variable "health_probe_name" {
   description = "Name of the health probe"
   type        = string
+  default     = "lb-health-probe"
 }
 
 variable "health_probe_port" {
@@ -82,6 +92,7 @@ variable "health_probe_port" {
 variable "load_balancing_rule_name" {
   description = "Name of the load balancing rule"
   type        = string
+  default     = "lb-load-balancing-rule"
 }
 
 variable "frontend_port" {
