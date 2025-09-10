@@ -8,7 +8,7 @@ terraform {
 }
 
 provider "azurerm" {
-  subscription_id = "807d385c-fe57-4882-9e48-1bb1077091f1"
+  subscription_id = "ac0192a4-f2ec-4c2e-bf7e-6e8a051fe856"
   features {
     subscription {
       prevent_cancellation_on_destroy = true
